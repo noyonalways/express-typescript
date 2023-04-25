@@ -22,10 +22,7 @@ app.use(bodyParser.json());
 
 // home route
 app.get("/", (req: Request, res: Response) => {
-	return res.status(200).json({
-		success: true,
-		message: "App in Running",
-	});
+	return res.status(200).sendFile(__dirname + '/public/index.html')
 });
 
 
@@ -34,6 +31,9 @@ app.use("/user", userRoute);
 app.use('/auth', authRoute)
 
 
+app.all("*", (req: Request, res: Response) => {
+	return res.status(404).sendFile(__dirname + '/public/404.html')
+});
 
 export default app;
 
