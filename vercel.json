@@ -1,0 +1,14 @@
+{
+    "version": 2,
+    "routes": [
+      { "src": "/.*", "dest": "src/index.ts" }
+    ],
+    "env": {
+      "MY_ENV_VAR": "my-value"
+    },
+    "builds": {
+      "src/**/*.ts": "tsc --build tsconfig.json",
+      "public/**/*": "@vercel/static"
+    }
+  }
+  
